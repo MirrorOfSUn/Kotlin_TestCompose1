@@ -1,7 +1,7 @@
 package com.example.testcompose1
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.padding //-
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
@@ -14,7 +14,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.dp //-
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -27,8 +27,18 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 @Composable
 fun DefaultPreviewStateViewModel() {
     TestCompose1Theme {
-        // HelloContentStateFull()
-        // HelloScreenStateLess()
+        Screen2()
+    }
+}
+
+@Composable
+fun Screen2() {
+
+    val btnGlobValue = remember { mutableStateOf(0) }
+
+    Column {
+        HelloContentStateFull()
+        HelloScreenStateLess()
         HelloScreenViewModel()
     }
 }
@@ -53,7 +63,7 @@ fun HelloContentStateFull() {
         OutlinedTextField(
             value = name,
             onValueChange = { name = it },
-            label = { Text("Name") }
+            label = { Text("HelloContentStateFull") }
         )
     }
 }
@@ -77,7 +87,7 @@ fun HelloContentStateLess(name: String, onNameChange: (String) -> Unit) {
         OutlinedTextField(
             value = name,
             onValueChange = onNameChange,
-            label = { Text("Name") }
+            label = { Text("HelloScreenStateLess") }
         )
     }
 }
@@ -111,7 +121,7 @@ fun HelloContentViewModel(name: String, onNameChange: (String) -> Unit) {
         OutlinedTextField(
             value = name,
             onValueChange = onNameChange,
-            label = { Text("Name") }
+            label = { Text("HelloContentViewModel") }
         )
     }
 }

@@ -1,15 +1,18 @@
 package com.example.testcompose1
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Button
+import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
+import androidx.compose.material.Surface  // -
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -29,79 +32,19 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    HelloScreenViewModel()
+                    Column {
+                        Text("Stateful Vs Stateless")
+                        Divider()
+                        Screen1()
+//                        Text("Stateful Vs Stateless")
+//                        Divider()
+//                        Screen2()
+                    }
+
                 }
             }
         }
     }
 }
 
-@Composable
-fun RunAll() {
-    val clickCounter = remember { mutableStateOf(0) }
 
-    Column {
-        Text(
-            text = "Clicked ${clickCounter.value} times!"
-        )
-        Button(
-            onClick = {
-                clickCounter.value++
-                println("RunAll: ${clickCounter.value}")
-            },
-        ) {
-            Text("RunAll Btn")
-        }
-        NoState()
-        MutableStateClick()
-        MutableStateClickWithRemember()
-        RememberSavableSample()
-    }
-}
-@Composable
-fun NoState() {
-    var clickCount = 0
-    Column {
-        Button(onClick = {
-            clickCount++
-            println("NoState: $clickCount")
-        }) {
-            Text(text = "$clickCount NoState")
-        }
-    }
-}
-@Composable
-fun MutableStateClick() {
-    var clickCount:Int by mutableStateOf(0)//Not recommended
-    Column {
-        Button(onClick = { clickCount++ }) {
-            Text(text = "$clickCount MutableStateClick")
-        }
-    }
-}
-@Composable
-fun MutableStateClickWithRemember() {
-    var clickCount:Int by remember { mutableStateOf(0) }//Not recommended
-    Column {
-        Button(onClick = { clickCount++ }) {
-            Text(text = "$clickCount MutableStateClickWithRemember")
-        }
-    }
-}
-@Composable
-fun RememberSavableSample() {
-    val clickCount = rememberSaveable { mutableStateOf(0) }
-    Column {
-        Button(onClick = { clickCount.value++ }) {
-            Text(text = "" + clickCount.value + " RememberSavableSample")
-        }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    TestCompose1Theme {
-        RunAll()
-    }
-}
