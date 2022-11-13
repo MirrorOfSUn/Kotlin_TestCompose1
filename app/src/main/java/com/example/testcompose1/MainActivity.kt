@@ -6,6 +6,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
 import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
@@ -29,7 +31,9 @@ class MainActivity : ComponentActivity() {
             TestCompose1Theme {
                 // A surface container using the 'background' color from the theme
                 Surface(
-                    modifier = Modifier.fillMaxSize(),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .verticalScroll(rememberScrollState()),
                     color = MaterialTheme.colors.background
                 ) {
                     Column {
@@ -39,9 +43,12 @@ class MainActivity : ComponentActivity() {
 //                        Text("Stateful Vs Stateless")
 //                        Divider()
 //                        Screen2()
-                        Text("Row - Column")
+//                        Text("Row - Column")
+//                        Divider()
+//                        Screen3()
+                        Text("Box")
                         Divider()
-                        Screen3()
+                        Screen4()
                     }
 
                 }
