@@ -2,9 +2,15 @@ package com.example.testcompose1
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding //-
+import androidx.compose.material.Card
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.KeyboardArrowDown
+import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -40,6 +46,7 @@ fun Screen2() {
         HelloContentStateFull()
         HelloScreenStateLess()
         HelloScreenViewModel()
+        ExpandableCard("Card Title", "text text text text text text text text text text ")
     }
 }
 
@@ -123,5 +130,26 @@ fun HelloContentViewModel(name: String, onNameChange: (String) -> Unit) {
             onValueChange = onNameChange,
             label = { Text("HelloContentViewModel") }
         )
+    }
+}
+
+@Composable
+fun ExpandableCard(title: String, body:String){
+    var expanded by remember() { mutableStateOf(false) }
+
+    Card {
+        Column {
+            Text(title)
+            if (expanded){
+                Text(body)
+                IconButton(onClick = { expanded = false }) {
+                    Icon(Icons.Filled.KeyboardArrowUp, contentDescription = "Collapse")
+                }
+            } else {
+                IconButton(onClick = { expanded = true }) {
+                    Icon(Icons.Filled.KeyboardArrowDown, contentDescription = "Expand")
+                }
+            }
+        }
     }
 }

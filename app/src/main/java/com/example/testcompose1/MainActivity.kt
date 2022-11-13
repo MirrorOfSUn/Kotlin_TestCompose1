@@ -33,12 +33,15 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     Column {
-                        Text("Stateful Vs Stateless")
-                        Divider()
-                        Screen1()
+//                        Text("Stateful Vs Stateless")
+//                        Divider()
+//                        Screen1()
 //                        Text("Stateful Vs Stateless")
 //                        Divider()
 //                        Screen2()
+                        Text("Row - Column")
+                        Divider()
+                        Screen3()
                     }
 
                 }
