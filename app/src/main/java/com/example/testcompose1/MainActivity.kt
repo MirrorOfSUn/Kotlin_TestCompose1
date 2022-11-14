@@ -46,9 +46,12 @@ class MainActivity : ComponentActivity() {
 //                        Text("Row - Column")
 //                        Divider()
 //                        Screen3()
-                        Text("Box")
+//                        Text("Box")
+//                        Divider()
+//                        Screen4()
+                        Text("Text")
                         Divider()
-                        Screen4()
+                        Screen5()
                     }
 
                 }
