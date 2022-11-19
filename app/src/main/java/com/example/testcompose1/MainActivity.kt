@@ -55,9 +55,12 @@ class MainActivity : ComponentActivity() {
 //                        Text("Card")
 //                        Divider()
 //                        Screen6()
-                        Text("Text Input")
+//                        Text("Text Input")
+//                        Divider()
+//                        Screen7()
+                        Text("Google Button")
                         Divider()
-                        Screen7()
+                        Screen8()
                     }
 
                 }
